@@ -15,7 +15,7 @@ int bruteForce(vector<int>& a)
     for(int i = 0; i < n; i++)
     {
         st.insert(a[i]); //Inserting in set takes "log N" so
-        //whole loop TC ->O(N logN) 
+        //whole loop TC ->O(N logN)
     }
 
     //Iterate the set and store every elements of set in array from starting

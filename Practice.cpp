@@ -1,28 +1,78 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-bool ifSorted(vector<int> &arr)
+vector<int> unionArray(vector<int> &arr1, vector<int> &arr2)
 {
-    int n = arr.size();
+    vector<int> ans;
+    int n = arr1.size();
+    int m = arr2.size();
+    int l = 0;
+    int r = 0;
 
-    int breakPoints = 0;
-
-    for (int i = 0; i < n; i++)
+    while (l < n && r < m)
     {
-        if (arr[i] > arr[(i + 1) % n] && ++breakPoints > 1)
-            return false;
+        if (arr1[l] < arr2[r])
+        {
+            if (ans.empty() || ans.back() != arr1[l])
+            {
+                ans.emplace_back(arr1[l]);
+            }
+            l++;
+        }
+        else if (arr2[r] < arr1[l])
+        {
+            if (ans.empty() || ans.back() != arr2[r])
+            {
+                ans.emplace_back(arr2[r]);
+            }
+            r++;
+        }
+        else
+        {
+            if (ans.empty() || ans.back() != arr1[l])
+            {
+                ans.emplace_back(arr1[l]);
+            }
+            l++;
+            r++;
+        }
     }
 
-    return true;
+    while (l < n)
+    {
+        if (ans.empty() || ans.back() != arr1[l])
+        {
+            ans.emplace_back(arr1[l]);
+        }
+        l++;
+    }
+
+    while (r < m)
+    {
+        if (ans.empty() || ans.back() != arr2[r])
+        {
+            ans.emplace_back(arr2[r]);
+        }
+        r++;
+    }
+
+    return ans;
 }
 
 int main()
 {
-    vector<int> arr = {2, 1, 3, 4};
+    vector<int> arr1 = {4, 4, 5, 5};
 
-    bool ans = ifSorted(arr);
+    vector<int> arr2 = {1, 2, 3, 3, 7, 8, 9, 11};
 
-    cout << (ans ? "Rotated & Sorted" : "Unsorted");
+    vector<int> ans;
+
+    ans = unionArray(arr1, arr2);
+
+    for (auto it : ans)
+    {
+        cout << it << " ";
+    }
 
     return 0;
 }

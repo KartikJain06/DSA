@@ -1,20 +1,23 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-//Optimal Solution
-//TC -> O(n)
-//SC -> O(1)
-void rotateArray(vector<int>& arr)
+// Question :
+// Given an integer array nums, rotate the array to the left by one
+
+// Optimal Solution
+// TC -> O(n)
+// SC -> O(1)
+void rotateArray(vector<int> &arr)
 {
     int n = arr.size();
     int temp = arr[0];
 
-    for(int i = 1; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
-        arr[i-1] = arr[i];
+        arr[i - 1] = arr[i];
     }
 
-    arr[n-1] = temp;
+    arr[n - 1] = temp;
 }
 
 int main()
@@ -23,7 +26,7 @@ int main()
 
     rotateArray(arr);
 
-    for(auto it : arr)
+    for (auto it : arr)
     {
         cout << it << " ";
     }

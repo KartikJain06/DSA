@@ -1,6 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Question :
+// Given two sorted arrays, arr1, and arr2 of size n and m. Find the union of two sorted arrays.
+
+// The union of two arrays can be defined as the common and distinct elements in the two arrays.
+
+// NOTE: Elements in the union should be in ascending order.
+
+
+
 //Brute Force Approach
 //TC -> O(n1log n + n2log n) + O(n1 + n2)
 //SC -> O(n1 + n2) + O(n1 + n2)
@@ -28,8 +37,8 @@ vector<int> bruteForce(vector<int>& arr1, vector<int>& arr2)
 }
 
 //OPtimal Soln
-//TC -> O()
-//SC -> O()
+//TC -> O(n+m)
+//SC -> O(n+m )
 vector<int> optimalSol(vector<int>& arr1, vector<int>& arr2)
 {
     int n1 = arr1.size();
